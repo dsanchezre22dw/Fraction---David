@@ -1,13 +1,19 @@
 package Exercises1.ex4;
 
+
 public class Fraction {
 
     private int numerator;
     private int denominator;
 
-    public Fraction(int num, int den){
+    public Fraction(int num, int den) throws FractionException {
         this.numerator = num;
+
+        if (den == 0){
+            throw new FractionException("Cannot instantiate a fraction with denominator 0");
+        }
         this.denominator = den;
+
     }
 
     @Override
@@ -16,32 +22,32 @@ public class Fraction {
     }
 
 
-    public Fraction add(Fraction fr){
+    public Fraction add(Fraction fr) throws FractionException {
         Fraction result = new Fraction((fr.denominator*this.numerator) + (this.denominator*fr.numerator),this.denominator*fr.denominator);
 
         return simplify(result);
     }
 
-    public Fraction subtract(Fraction fr){
+    public Fraction subtract(Fraction fr) throws FractionException {
         Fraction result = new Fraction((fr.denominator*this.numerator) - (this.denominator*fr.numerator),this.denominator*fr.denominator);
 
         return simplify(result);
     }
 
-    public Fraction multiply(Fraction fr){
+    public Fraction multiply(Fraction fr) throws FractionException {
         Fraction result = new Fraction(this.numerator*this.denominator,this.denominator*fr.denominator);
 
         return simplify(result);
     }
 
-    public Fraction divide(Fraction fr){
+    public Fraction divide(Fraction fr) throws FractionException {
         Fraction result = new Fraction(this.numerator*fr.denominator, this.denominator*fr.numerator);
 
         return simplify(result);
     }
 
 
-    public static Fraction simplify(Fraction fr){
+    public static Fraction simplify(Fraction fr) throws FractionException {
         int aux, a = fr.numerator, b = fr.denominator;
 
         while (b != 0){
