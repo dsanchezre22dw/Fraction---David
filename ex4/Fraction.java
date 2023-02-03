@@ -41,8 +41,11 @@ public class Fraction {
     }
 
     public Fraction divide(Fraction fr) throws FractionException {
-        Fraction result = new Fraction(this.numerator*fr.denominator, this.denominator*fr.numerator);
+        if (fr.numerator == 0){
+            throw new FractionException("This operation results in an invalid fraction");
+        }
 
+        Fraction result = new Fraction(this.numerator*fr.denominator, this.denominator*fr.numerator);
         return simplify(result);
     }
 
