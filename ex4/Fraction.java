@@ -18,7 +18,7 @@ public class Fraction {
 
     @Override
     public String toString(){
-        return "Numerator: " + this.numerator + "\nDenominator: " + this.denominator;
+        return "Numerator: " + this.numerator + "  Denominator: " + this.denominator;
     }
 
 
@@ -35,7 +35,7 @@ public class Fraction {
     }
 
     public Fraction multiply(Fraction fr) throws FractionException {
-        Fraction result = new Fraction(this.numerator*this.denominator,this.denominator*fr.denominator);
+        Fraction result = new Fraction(this.numerator*fr.numerator,this.denominator*fr.denominator);
 
         return simplify(result);
     }
